@@ -6,6 +6,7 @@
     "cors": "npm:cors@^2.8.5"
   },
   "tasks": {
-    "dev": "deno run -A --watch src/main.ts"
+    "dev": "deno run -A --watch src/main.ts",
+    "start": "deno run -A src/main.ts"
   }
 }
