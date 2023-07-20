@@ -32,7 +32,7 @@ const EventsNavigator = () => {
           Añadir nuevo evento
         </Button>
       </NavigationButtons>
-      <DayEvents date={date} />;
+      <DayEvents date={date} key={date.toISOString()} />;
     </Container>
   );
 };
