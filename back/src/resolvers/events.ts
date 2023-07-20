@@ -35,7 +35,7 @@ const events = async (req: express.Request, res: express.Response) => {
       .find({
         date: {
           $gte: new Date(new Date(date).setHours(0, 0, 0, 0)),
-          $lt: new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
+          $lte: new Date(new Date(date).setHours(23, 59, 59, 999)),
         },
       })
       .sort({ init: 1, end: 1 })
