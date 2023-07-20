@@ -15,13 +15,16 @@ const AddEventComponent = () => {
   });
 
   const addEvent = async (event: Omit<Event, "id">) => {
-    const response = await fetch(`http://localhost:4000/addEvent`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(event),
-    });
+    const response = await fetch(
+      `https://back-tbyditz3fa-no.a.run.app/addEvent`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event),
+      }
+    );
 
     if (response.status === 200) {
       router.push("/");

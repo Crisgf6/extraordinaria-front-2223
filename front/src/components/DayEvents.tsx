@@ -17,7 +17,7 @@ const DayEvents = (props: DayEventsProps) => {
 
   const fetchEvents = async (date: Date) => {
     const response = await fetch(
-      `http://localhost:4000/events?date=${date.toISOString()}`,
+      `https://back-tbyditz3fa-no.a.run.app/events?date=${date.toISOString()}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -31,9 +31,12 @@ const DayEvents = (props: DayEventsProps) => {
   };
 
   const deleteEvent = async (id: string) => {
-    const response = await fetch(`http://localhost:4000/deleteEvent/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://back-tbyditz3fa-no.a.run.app/deleteEvent/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (response.status === 200) {
       fetchEvents(new Date(props.date));
     } else {
