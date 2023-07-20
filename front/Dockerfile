@@ -1,10 +1,10 @@
 FROM node:18  
 
 # COPY EVERYTHING FROM THE CURRENT DIRECTORY TO THE CONTAINER
-COPY . /app
+COPY ./front /app
 
 # SET THE WORKING DIRECTORY TO /app
-WORKDIR /app
+WORKDIR /app/front
 
 # RUN npm install
 RUN npm install
