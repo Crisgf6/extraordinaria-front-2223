@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import event from "./resolvers/event.ts";
 import events from "./resolvers/events.ts";
@@ -8,6 +9,7 @@ import addEvent from "./resolvers/addEvent.ts";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app

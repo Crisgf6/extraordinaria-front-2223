@@ -38,19 +38,19 @@ const addEvent = async (req: express.Request, res: express.Response) => {
     // check if event already exists overlapping
     const events = await EventsCollection.find({
       date: {
-        $eq: date,
+        $eq: new Date(date.setHours(0, 0, 0, 0)),
       },
       $or: [
         {
           init: {
-            $gte: event.init,
-            $lte: event.end,
+            $gt: event.init,
+            $lt: event.end,
           },
         },
         {
           end: {
-            $gte: event.init,
-            $lte: event.end,
+            $gt: event.init,
+            $lt: event.end,
           },
         },
         {
@@ -77,9 +77,10 @@ const addEvent = async (req: express.Request, res: express.Response) => {
     }
 
     // insert event
-    const insertEvent = await db
-      .collection("events")
-      .insertOne({ ...event, date: new Date(event.date) });
+    const insertEvent = await db.collection("events").insertOne({
+      ...event,
+      date: new Date(new Date(event.date).setHours(0, 0, 0, 0)),
+    });
     if (insertEvent.acknowledged) {
       res.status(200).json({ ...event, id: insertEvent.insertedId.toString() });
     } else {
