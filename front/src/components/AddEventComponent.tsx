@@ -29,7 +29,8 @@ const AddEventComponent = () => {
     if (response.status === 200) {
       router.push("/");
     } else {
-      alert("Error");
+      const data = await response.json();
+      alert(`Error: ${data.message}`);
     }
   };
 

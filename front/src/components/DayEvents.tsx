@@ -40,7 +40,8 @@ const DayEvents = (props: DayEventsProps) => {
     if (response.status === 200) {
       fetchEvents(new Date(props.date));
     } else {
-      alert("Error");
+      const data = await response.json();
+      alert(`Error: ${data.message}`);
     }
   };
 
